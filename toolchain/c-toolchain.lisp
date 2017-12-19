@@ -214,6 +214,7 @@
            #+ecl (parse-command-flags c::*cc-flags*)
            ;; FreeBSD non-base header files
            #+freebsd (list "-I" "/usr/local/include/")
+           #+openbsd (list "-I" "/usr/local/include/")
            (split-cflags (getenv "CFLAGS")))
           *ld* *cc*
           *ld-exe-flags* `(,@arch-flags #-darwin "-Wl,--export-dynamic")
@@ -389,4 +390,3 @@ is bound to a temporary file name, then atomically renaming that temporary file 
     (cffi:load-foreign-library (file-namestring so) :search-path (list (pathname-directory-pathname so)))))
 
 (setf (find-class 'asdf::o-file) (find-class 'o-file))
-
